@@ -175,7 +175,7 @@ body {
    HERO
    ============================================ */
 .hero-section {
-  position: center;
+  position: relative;
   z-index: 1;
   min-height: 100vh;
   display: flex;
