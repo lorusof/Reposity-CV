@@ -104,17 +104,6 @@ const projects = [
     file: "assets/reporte_maquina_cnc.pdf",
     fileLabel: "Descargar Reporte PDF"
   },
-  {
-    id: "10",
-    type: "cert",
-    typeLabel: "Carpeta",
-    title: "Producción Electrónica — Evidencias",
-    desc: "6 prácticas: KiCad, Altium, MonoFab, xTool, soldadura y cortadora de vinil. Proyecto en equipo.",
-    tags: ["KiCad", "Altium", "PCB", "MonoFab", "xTool"],
-    fullDesc: "Carpeta de evidencias de la materia Producción Electrónica (Mtro. Javier Osorio Figueroa). Cubre: diseño PCB con KiCad + MODs, soldadura, Multisim, cortadora de vinil, Altium Designer y fabricación láser con xTool F1 Ultra. Equipo: Iván Rojas · Michel Sánchez Dumit · Giovanna González Martínez.",
-    file: "assets/reporte_produccion_electronica.pdf",
-    fileLabel: "Descargar Carpeta PDF"
-  }
 ];
 
 /* ============================================================
@@ -241,7 +230,7 @@ const projects = [
 
     card.innerHTML = `
       <span class="card-type ${p.type}">${p.typeLabel}</span>
-      <div class="card-number">${p.id} / 07</div>
+      <div class="card-number">${p.id} / 09</div>
       <h3 class="card-title">${p.title}</h3>
       <p class="card-desc">${p.desc}</p>
       <div class="card-tags">${p.tags.map(t => `<span class="card-tag">${t}</span>`).join('')}</div>
