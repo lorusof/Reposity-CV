@@ -81,6 +81,39 @@ const projects = [
     fullDesc: "Propuesta de prototipo portátil de monitoreo cardiaco en forma de pulsera, diseñado para adultos mayores vulnerables. El dispositivo mide frecuencia cardiaca, detecta caídas y envía alertas automáticas a familiares o servicios de salud.",
     file: "assets/Desarrollo de un prototipo portátil de monitoreo cardiaco en forma de pulsera.pdf",
     fileLabel: "Descargar Ensayo"
+  },
+  {
+    id: "08",
+    type: "proyecto",
+    typeLabel: "Proyecto",
+    title: "Brazo Robótico — Reporte Técnico",
+    desc: "Diseño en SolidWorks, corte láser en MDF y control con Arduino de un brazo robótico funcional.",
+    tags: ["Arduino", "SolidWorks", "Corte Láser", "Servomotores"],
+    fullDesc: "Reporte técnico completo del diseño y construcción de un brazo robótico desde cero. Modelado 3D en SolidWorks, fabricación por corte láser en MDF de 3 mm, ensamble con servomotores de 9g y programación de control mediante potenciómetros y Arduino Uno.",
+    file: "assets/reporte_brazo_robotico.pdf",
+    fileLabel: "Descargar Reporte PDF"
+  },
+  {
+    id: "09",
+    type: "proyecto",
+    typeLabel: "Proyecto",
+    title: "Máquina CNC de Dibujo — Reporte Técnico",
+    desc: "Máquina CNC controlada vía serial con motores NEMA 17, impresión 3D y Arduino CNC Shield. Proyecto en equipo.",
+    tags: ["CNC", "Arduino", "NEMA 17", "Impresión 3D"],
+    fullDesc: "Reporte técnico del diseño, ensamble y programación de una máquina CNC para dibujo automatizado. Sistema con dos ejes de movimiento (NEMA 17), estructura en MDF y piezas en 3D, controlada desde PC por puerto serial. Proyecto en equipo: Iván Rojas · Michel Sánchez Dumit · Giovanna González Martínez.",
+    file: "assets/reporte_maquina_cnc.pdf",
+    fileLabel: "Descargar Reporte PDF"
+  },
+  {
+    id: "10",
+    type: "cert",
+    typeLabel: "Carpeta",
+    title: "Producción Electrónica — Evidencias",
+    desc: "6 prácticas: KiCad, Altium, MonoFab, xTool, soldadura y cortadora de vinil. Proyecto en equipo.",
+    tags: ["KiCad", "Altium", "PCB", "MonoFab", "xTool"],
+    fullDesc: "Carpeta de evidencias de la materia Producción Electrónica (Mtro. Javier Osorio Figueroa). Cubre: diseño PCB con KiCad + MODs, soldadura, Multisim, cortadora de vinil, Altium Designer y fabricación láser con xTool F1 Ultra. Equipo: Iván Rojas · Michel Sánchez Dumit · Giovanna González Martínez.",
+    file: "assets/reporte_produccion_electronica.pdf",
+    fileLabel: "Descargar Carpeta PDF"
   }
 ];
 
