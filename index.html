@@ -1,83 +1,152 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iván Rojas | Engineering Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iván Rojas | Engineering Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- El lienzo para el efecto de partículas tipo 18447.mp4 -->
-    <canvas id="bg"></canvas>
-    <!-- Tu logo personalizado -->
-<img src="assets/logo.png" id="personal-logo" alt="Logo Iván Rojas">
 
-    <main>
-        <section class="hero">
-            <h1>Iván Rojas Robles</h1>
-            <p>Mechatronics Engineering Student | Electronics Technician</p>
-        </section>
+  <canvas id="bg-canvas"></canvas>
 
-        <section class="projects">
-            <h2>Historial de Proyectos</h2>
-            <div class="grid"><div class="grid">
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
 
-            <!-- Proyecto Técnico -->
-            <div class="card">
-                <h3>Agronauta Verde</h3>
-                <p>Automatización con ESP32 y sensores de conductividad diseñado para control de invernadero.</p>
-                <a href="assets/agronauta_verde.pdf" target="_blank" class="btn">Leer Reporte Técnico</a>
-            </div>
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="nav-logo">
+      <img src="assets/logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+      <span class="logo-fallback">IR<span class="accent">.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#hero">Inicio</a></li>
+      <li><a href="#about">Perfil</a></li>
+      <li><a href="#projects">Proyectos</a></li>
+      <li><a href="#cabin">Cabina</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+    <div class="nav-status">
+      <div class="badge-ring"></div>
+      <span>Disponible</span>
+    </div>
+  </nav>
 
-            <!-- Certificación -->
-            <div class="card">
-                <h3>Masterclass 4.0 | IngeLearn</h3>
-                <p>Certificación en automatización industrial y nuevas tecnologías.</p>
-                <a href="assets/Ivan-Rojas-3-6865D22A130B9-2025-07-02-21-43-22.pdf" target="_blank" class="btn">Ver Certificado</a>
-            </div>
+  <!-- HERO -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <p class="hero-sub" id="hero-sub">Mechatronics Engineering Student</p>
+      <h1 class="hero-title" id="hero-title">
+        <span class="line">Iván</span>
+        <span class="line">Rojas<span class="accent">.</span></span>
+      </h1>
+      <p class="hero-desc" id="hero-desc">Electronics Technician · Automatización · Robótica · IoT</p>
+      <div class="hero-actions" id="hero-actions">
+        <a href="#projects" class="cta-btn primary">Ver proyectos <span class="btn-arrow">→</span></a>
+        <a href="#contact"  class="cta-btn secondary">Contacto</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
 
-            <!-- Certificación 2 -->
-            <div class="card">
-                <h3>Semana de la automatización | Control +</h3>
-                <p>Certificación en automatización industrial y nuevas tecnologías.</p>
-                <a href="assets/Ivan Rojas Robles.pdf" target="_blank" class="btn">Ver Certificado</a>
-            </div>
-
-            <!-- Proyecto Intercultural -->
-            <div class="card">
-                <h3>Investigación: El Trueque</h3>
-                <p>Estudio sobre la tradición del Trueque en Cholula y su impacto social.</p>
-                <a href="assets/Poster intercultural.pdf" target="_blank" class="btn">Descargar Ensayo</a>
-            </div>
-
-            <!-- Proyecto de ingenieria -->
-            <div class="card">
-                <h3>Reporte de actividades.</h3>
-                <p>Conocimiento de las actividades realizadas durante el semestre para entendimiento de niños.</p>
-                <a href="assets/Proyecto de ingenieria.pdf" target="_blank" class="btn">Descargar Ensayo</a>
-            </div>
-
-            <!-- Proyecto de Robótica -->
-             <div class="card">
-                <h3>Investigación: Sistema de Seguridad Inteligente</h3>
-                <p>Idea de un sistema de seguridad activa para motociclistas.</p>
-                <a href="assets/El Casco Inteligente con IA es un sistema de seguridad activa diseñado para motociclistas, capaz de detectar accidentes en tiempo real mediante la combina.pdf" target="_blank" class="btn">Descargar Ensayo</a>
-            </div>
-
-             <!-- Proyecto de salud -->
-             <div class="card">
-                <h3>Investigación: Sistema de Salud inteligente.</h3>
-                <p>Idea de un sistema de seguridad activa para adultos mayores en situacion de abandono.</p>
-                <a href="assets/Desarrollo de un prototipo portátil de monitoreo cardiaco en forma de pulsera.pdf" target="_blank" class="btn">Descargar Ensayo</a>
-            </div>
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="section-inner">
+      <div class="section-label">01 — Perfil</div>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>Ingeniero en formación,<br><span class="accent">constructor</span> por naturaleza.</h2>
+          <p>Estudiante de Ingeniería Mecatrónica con experiencia técnica en electrónica, automatización y sistemas embebidos. Me apasiona diseñar soluciones que conecten hardware y software para resolver problemas reales.</p>
+          <p>Basado en Puebla, México.</p>
         </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        <div class="about-right">
+          <div class="skills-label">Stack &amp; Herramientas</div>
+          <div class="skills-grid">
+            <div class="skill-chip">ESP32 / Arduino</div>
+            <div class="skill-chip">C / C++</div>
+            <div class="skill-chip">Python</div>
+            <div class="skill-chip">Automatización</div>
+            <div class="skill-chip">Three.js</div>
+            <div class="skill-chip">Electrónica</div>
+            <div class="skill-chip">GSAP</div>
+            <div class="skill-chip">Robótica</div>
+            <div class="skill-chip">HTML &amp; CSS</div>
+            <div class="skill-chip">JavaScript</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Librería Three.js para el fondo 3D -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="script.js"></script>
+  <!-- PROJECTS -->
+  <section id="projects" class="projects-section">
+    <div class="section-inner">
+      <div class="section-label">02 — Proyectos</div>
+      <h2 class="section-title">Trabajo seleccionado</h2>
+      <div class="projects-grid" id="projects-grid"></div>
+    </div>
+  </section>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-card" id="modal-card">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-content" id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- CABINA DE CONTROL -->
+  <section id="cabin" class="cabin-section">
+    <div class="section-inner">
+      <div class="section-label">03 — Cabina de Control</div>
+      <h2 class="section-title">Proyectos finalizados<br>&amp; Sistemas integrados</h2>
+      <div class="cabin-stats">
+        <div class="stat-item reveal">
+          <span class="stat-num" data-target="7">0</span>
+          <span class="stat-label">Proyectos</span>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-num" data-target="2">0</span>
+          <span class="stat-label">Certificaciones</span>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-num" data-target="3">0</span>
+          <span class="stat-label">Investigaciones</span>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-num" data-target="3">0</span>
+          <span class="stat-label">Semestres</span>
+        </div>
+      </div>
+      <div class="cabin-logo-wrap">
+        <img src="assets/logo.png" alt="Logo Iván Rojas" class="cabin-logo" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="section-inner">
+      <div class="section-label">04 — Contacto</div>
+      <h2 class="section-title">Trabajemos juntos<span class="accent">.</span></h2>
+      <p class="contact-sub">¿Tienes un proyecto de automatización, electrónica o desarrollo? Hablemos.</p>
+      <a href="mailto:ivan@email.com" class="contact-link">ivan.rojas1f@email.com →</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>Iván Rojas Robles · Ingeniería Mecatrónica</span>
+    <span class="accent">Puebla, MX · 2025</span>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
