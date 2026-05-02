@@ -10,9 +10,9 @@ const projects = [
     type: "proyecto",
     typeLabel: "Proyecto",
     title: "Agronauta Verde",
-    desc: "Automatización con ESP32 y sensores de conductividad diseñado para control de invernadero.",
+    desc: "Automatización con ESP32 y sensores de conductividad diseñado para control de invernadero sustentable.",
     tags: ["ESP32", "IoT", "Sensores", "C++"],
-    fullDesc: "Sistema de automatización para invernadero basado en ESP32. Utiliza sensores de conductividad para monitorear y controlar las condiciones del cultivo en tiempo real, optimizando el riego y los nutrientes de forma autónoma.",
+    fullDesc: "Sistema de automatización para invernadero basado en ESP32. Utiliza sensores de conductividad para monitorear y controlar las condiciones del cultivo en tiempo real, optimizando el riego y los nutrientes de forma autónoma, para el cuidado del medio ambiente.",
     file: "assets/agronauta_verde.pdf",
     fileLabel: "Leer Reporte Técnico"
   },
