@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Iván Rojas | Engineering Portfolio</title>
+  <title>Iván Rojas | Portafolio de Ingeniería</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
@@ -25,27 +25,27 @@
       <li><a href="#hero">Inicio</a></li>
       <li><a href="#about">Perfil</a></li>
       <li><a href="#projects">Proyectos</a></li>
-      <li><a href="#cabin">Cabina</a></li>
+      <li><a href="#cabin">Impacto</a></li>
       <li><a href="#contact">Contacto</a></li>
     </ul>
     <div class="nav-status">
       <div class="badge-ring"></div>
-      <span>Disponible</span>
+      <span>Disponible para proyectos</span>
     </div>
   </nav>
 
   <!-- HERO -->
   <section id="hero" class="hero-section">
     <div class="hero-content">
-      <p class="hero-sub" id="hero-sub">Mechatronics Engineering Student</p>
+      <p class="hero-sub" id="hero-sub">Ingeniería Mecatrónica & Desarrollo de Software</p>
       <h1 class="hero-title" id="hero-title">
         <span class="line">Iván</span>
-        <span class="line">Rojas<span class="accent">.</span></span>
+        <span class="line text-gradient">Rojas<span class="accent">.</span></span>
       </h1>
-      <p class="hero-desc" id="hero-desc">Electronics Technician · Automatización · Robótica · IoT</p>
+      <p class="hero-desc" id="hero-desc">Automatización Industrial · Robótica · Inteligencia Artificial · Desarrollo Multiplataforma</p>
       <div class="hero-actions" id="hero-actions">
         <a href="#projects" class="cta-btn primary">Ver proyectos <span class="btn-arrow">→</span></a>
-        <a href="#contact"  class="cta-btn secondary">Contacto</a>
+        <a href="assets/CV.pdf" target="_blank" class="cta-btn secondary">Descargar CV</a>
       </div>
     </div>
     <div class="hero-scroll-hint">
@@ -60,21 +60,23 @@
       <div class="section-label">01 — Perfil</div>
       <div class="about-grid">
         <div class="about-text">
-          <h2>Ingeniero en formación,<br><span class="accent">constructor</span> por naturaleza.</h2>
-          <p>Estudiante de Ingeniería Mecatrónica con experiencia técnica en electrónica, automatización y sistemas embebidos. Me apasiona diseñar soluciones que conecten hardware y software para resolver problemas reales.</p>
-          <p>Basado en Puebla, México.</p>
+          <h2>Ingeniero en formación,<br><span class="text-gradient">creador</span> por naturaleza.</h2>
+          <p>Combino el diseño mecánico, la electrónica y la programación para construir sistemas inteligentes. Desde el desarrollo de aplicaciones web y móviles hasta el diseño de hardware IoT y la automatización industrial con PLCs.</p>
+          <p>Resido en Puebla, México, en constante aprendizaje sobre visión artificial, sistemas embebidos y arquitecturas backend.</p>
         </div>
         <div class="about-right">
-          <div class="skills-label">Stack &amp; Herramientas</div>
+          <div class="skills-label">Stack & Herramientas</div>
           <div class="skills-grid">
-            <div class="skill-chip">ESP32 / Arduino</div>
             <div class="skill-chip">C / C++</div>
             <div class="skill-chip">Python</div>
-            <div class="skill-chip">Automatización</div>
-            <div class="skill-chip">Electrónica</div>
-            <div class="skill-chip">Robótica</div>
-            <div class="skill-chip">HTML &amp; CSS</div>
-            <div class="skill-chip">JavaScript</div>
+            <div class="skill-chip">React Native</div>
+            <div class="skill-chip">JavaScript & PHP</div>
+            <div class="skill-chip">Flask</div>
+            <div class="skill-chip">Supabase & Firebase</div>
+            <div class="skill-chip">ESP32 & Raspberry Pi</div>
+            <div class="skill-chip">Siemens TIA Portal</div>
+            <div class="skill-chip">SolidWorks</div>
+            <div class="skill-chip">YOLO & OpenCV</div>
           </div>
         </div>
       </div>
@@ -84,8 +86,19 @@
   <!-- PROJECTS -->
   <section id="projects" class="projects-section">
     <div class="section-inner">
-      <div class="section-label">02 — Proyectos</div>
-      <h2 class="section-title">Trabajo seleccionado</h2>
+      <div class="section-label">02 — Proyectos & Certificaciones</div>
+      <div class="projects-header">
+        <h2 class="section-title">Trabajo destacado</h2>
+        
+        <!-- Sistema de Filtros -->
+        <div class="filter-container">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="software">Software & IA</button>
+          <button class="filter-btn" data-filter="hardware">Mecatrónica & IoT</button>
+          <button class="filter-btn" data-filter="cert">Certificaciones</button>
+        </div>
+      </div>
+
       <div class="projects-grid" id="projects-grid"></div>
     </div>
   </section>
@@ -101,28 +114,25 @@
   <!-- CABINA DE CONTROL -->
   <section id="cabin" class="cabin-section">
     <div class="section-inner">
-      <div class="section-label">03 — Cabina de Control</div>
-      <h2 class="section-title">Proyectos finalizados<br>&amp; Sistemas integrados</h2>
+      <div class="section-label">03 — Resumen</div>
+      <h2 class="section-title">Experiencia Técnica<br>& <span class="text-gradient">Sistemas Integrados</span></h2>
       <div class="cabin-stats">
         <div class="stat-item reveal">
-          <span class="stat-num" data-target="4">4</span>
-          <span class="stat-label">Proyectos</span>
+          <span class="stat-num" data-target="8">8</span>
+          <span class="stat-label">Proyectos Híbridos</span>
         </div>
         <div class="stat-item reveal">
-          <span class="stat-num" data-target="4">4</span>
+          <span class="stat-num" data-target="5">5</span>
           <span class="stat-label">Certificaciones</span>
         </div>
         <div class="stat-item reveal">
-          <span class="stat-num" data-target="3">3</span>
-          <span class="stat-label">Investigaciones</span>
+          <span class="stat-num" data-target="4">4</span>
+          <span class="stat-label">Lenguajes de Prog.</span>
         </div>
         <div class="stat-item reveal">
-          <span class="stat-num" data-target="4">4</span>
-          <span class="stat-label">Semestres</span>
+          <span class="stat-num" data-target="3">3</span>
+          <span class="stat-label">Áreas de Ingeniería</span>
         </div>
-      </div>
-      <div class="cabin-logo-wrap">
-        <img src="assets/logo.png" alt="Logo Iván Rojas" class="cabin-logo" onerror="this.style.display='none'">
       </div>
     </div>
   </section>
@@ -132,14 +142,16 @@
     <div class="section-inner">
       <div class="section-label">04 — Contacto</div>
       <h2 class="section-title">Trabajemos juntos<span class="accent">.</span></h2>
-      <p class="contact-sub">¿Tienes un proyecto de automatización, electrónica o desarrollo? Hablemos.</p>
-      <a href="mailto:ivan.rojas@iberopuebla.mx" class="contact-link">ivan.rojas@iberopuebla.mx →</a>
-      <a href="mailto:ivan.rojas.mec@gmail.com" class="contact-link">ivan.rojas.mec@gmail.com →</a>
+      <p class="contact-sub">¿Tienes un proyecto de automatización, inteligencia artificial o desarrollo de software? Hablemos.</p>
+      <div class="contact-links-wrapper">
+        <a href="mailto:ivan.rojas@iberopuebla.mx" class="contact-link">ivan.rojas@iberopuebla.mx ↗</a>
+        <a href="mailto:ivan.rojas.mec@gmail.com" class="contact-link">ivan.rojas.mec@gmail.com ↗</a>
+      </div>
     </div>
   </section>
 
   <footer class="footer">
-    <span>Iván Rojas Robles · Ingeniería Mecatrónica</span>
+    <span>Iván Rojas Robles · Universidad Iberoamericana</span>
     <span class="accent">Puebla, MX · 2026</span>
   </footer>
 
