@@ -1,77 +1,74 @@
 /* ============================================================
    PORTFOLIO — Iván Rojas Robles
-   Three.js (Neural Network effect) + GSAP + ScrollTrigger
+   Three.js + GSAP + ScrollTrigger
    ============================================================ */
 
 const projects = [
   {
-    id: "01", category: "hardware", typeLabel: "Robótica / IA", title: "Androide Azra",
-    desc: "Diseño y arquitectura para androide biomimético de asistencia en laboratorios.",
-    tags: ["Raspberry Pi", "YOLO", "Visión Artificial", "Mecatrónica"],
-    fullDesc: "Diseño de la arquitectura técnica para un androide biomimético enfocado en asistencia y seguridad en laboratorios de mecatrónica. El proyecto integra hardware de Raspberry Pi, procesamiento de visión computacional mediante modelos YOLO y control robótico avanzado.",
-    file: "#", fileLabel: "En Desarrollo"
-  },
-  {
-    id: "02", category: "software", typeLabel: "Desarrollo Móvil", title: "App Cotizaciones Eléctricas",
-    desc: "Aplicación móvil para generar presupuestos de materiales y recibos en PDF.",
-    tags: ["React Native", "Expo", "Móvil"],
-    fullDesc: "Aplicación móvil multiplataforma desarrollada en React Native y Expo. Permite gestionar inventarios de materiales para instalaciones eléctricas, calcular costos dinámicamente y exportar tickets o recibos profesionales en formato PDF.",
-    file: "#", fileLabel: "Ver Proyecto"
-  },
-  {
-    id: "03", category: "hardware", typeLabel: "IoT / Salud", title: "Pulsera de Monitoreo",
+    id: "01", category: "hardware", typeLabel: "IoT / Salud", title: "Pulsera de Monitoreo",
     desc: "Prototipo de monitoreo cardiaco portátil para adultos mayores vulnerables.",
-    tags: ["ESP32", "Sensores", "Supabase", "Firebase"],
-    fullDesc: "Diseño y desarrollo de un prototipo IoT tipo pulsera enfocado en el control de salud de adultos mayores. Mide parámetros cardíacos y registra anomalías en tiempo real, almacenando datos vitales de forma segura en la nube mediante Firebase y Supabase.",
+    tags: ["ESP32", "MAX30102", "MPU-6050", "Firebase"],
+    fullDesc: "Desarrollo de un prototipo portátil en forma de pulsera para el monitoreo continuo de la actividad cardíaca[cite: 11]. El hardware integra un ESP32, un sensor biométrico MAX30102 para ritmo cardíaco y SpO2, y un acelerómetro MPU-6050[cite: 11]. Utiliza una aplicación móvil y conectividad a Firebase para intervenir oportunamente en casos críticos de aislamiento social[cite: 11].",
     file: "assets/Desarrollo de un prototipo port til de monitoreo cardiaco en forma de pulsera.pdf", fileLabel: "Leer Documento"
   },
   {
-    id: "04", category: "software", typeLabel: "Desarrollo", title: "Cocina Tita - Sistema POS",
-    desc: "App de escritorio para gestión de pedidos y automatización vía WhatsApp.",
-    tags: ["Python", "Flask", "PyWebView", "Selenium"],
-    fullDesc: "Sistema integral de escritorio para la gestión de órdenes en restaurante. Integra una base de datos local para seguimiento de comandas y automatiza las notificaciones de pedidos mediante WhatsApp utilizando Selenium y Python.",
-    file: "#", fileLabel: "Ver Proyecto"
-  },
-  {
-    id: "05", category: "hardware", typeLabel: "Mecatrónica", title: "Brazo Robótico",
-    desc: "Diseño CAD, corte láser y control con Arduino de un brazo funcional de 4 ejes.",
-    tags: ["Arduino", "SolidWorks", "Corte Láser", "Servomotores"],
-    fullDesc: "Proyecto completo de robótica básica: modelado 3D de piezas mecánicas en SolidWorks, fabricación mediante corte láser en MDF y ensamble de servomotores controlados por rutinas de Arduino.",
+    id: "02", category: "hardware", typeLabel: "Robótica", title: "Brazo Robótico",
+    desc: "Diseño CAD, corte láser y control con Arduino de un brazo funcional.",
+    tags: ["Arduino Uno", "SolidWorks", "Corte Láser", "MDF"],
+    fullDesc: "Diseño y construcción de un brazo robótico desde cero[cite: 19]. El proceso inició con modelado en SolidWorks, seguido de fabricación mediante corte láser en MDF de 3 mm[cite: 19]. Se ensambló integrando servomotores de 9g y se programó el control manual mediante potenciómetros conectados a un Arduino Uno[cite: 19].",
     file: "assets/Brazo Robotico.pdf", fileLabel: "Descargar Reporte"
   },
   {
-    id: "06", category: "hardware", typeLabel: "Automatización", title: "Simulación de Planta",
-    desc: "Control logístico industrial mediante PLCs y lógica Ladder.",
-    tags: ["Siemens PLC", "TIA Portal", "Automatización"],
-    fullDesc: "Desarrollo de simulaciones de control automatizado y gestión logística para una planta de alimentos. Se aplicó lógica Ladder rigurosa sobre entornos SIEMENS TIA Portal para garantizar tiempos óptimos y prevención de fallos.",
-    file: "#", fileLabel: "Ver Detalles"
-  },
-  {
-    id: "07", category: "cert", typeLabel: "Certificación", title: "Siemens TIA Portal DC-3",
-    desc: "Constancia de competencias en programación avanzada de PLCs Siemens.",
-    tags: ["Siemens", "TIA Portal", "DC-3", "Industrial"],
-    fullDesc: "Certificación oficial DC-3 (STPS) en Programación y Automatización Industrial. Incluye arquitectura S7-1200/S7-300, diagnóstico de sistemas y simulación de entornos industriales complejos.",
-    file: "assets/DC3 SIEMENS- Rojas Robles Ivan.pdf", fileLabel: "Ver Certificado"
-  },
-  {
-    id: "08", category: "invest", typeLabel: "Investigación", title: "Casco Inteligente IA",
+    id: "03", category: "hardware", typeLabel: "IA / Seguridad", title: "Casco Inteligente",
     desc: "Sistema de seguridad activa para motociclistas con detección de accidentes.",
-    tags: ["IA", "IoT", "Seguridad", "Hardware"],
-    fullDesc: "Investigación y propuesta de un casco inteligente capaz de detectar colisiones o caídas en tiempo real mediante la combinación de sensores inerciales y visión artificial, emitiendo alertas autónomas a servicios de emergencia.",
+    tags: ["IA", "ESP32", "IMU", "GPS"],
+    fullDesc: "Casco inteligente con IA para detección y respuesta a accidentes de motociclistas[cite: 13]. Detecta impactos fuertes o caídas mediante un ESP32 integrado con sensores IMU y GPS[cite: 13]. Ante un accidente, inicia una cuenta regresiva que, de no cancelarse, envía alertas de emergencia automáticas[cite: 13].",
     file: "assets/El Casco Inteligente con IA es un sistema de seguridad activa dise ado para motociclistas, capaz de detectar accidentes en tiempo real mediante la combina.pdf", fileLabel: "Leer Ensayo"
   },
   {
-    id: "09", category: "cert", typeLabel: "Certificación", title: "Masterclass 4.0 | IngeLearn",
+    id: "04", category: "hardware", typeLabel: "Automatización", title: "Agronauta Verde",
+    desc: "Invernadero automatizado sustentable con paneles solares y control remoto.",
+    tags: ["ESP32", "Sensores", "Bluetooth", "WiFi"],
+    fullDesc: "Proyecto enfocado en el cuidado del medio ambiente que utiliza un panel solar para alimentar el invernadero en su totalidad[cite: 18]. Permite sustituir al personal para operaciones de recolección y control desde vía remota mediante conectividad Bluetooth y WiFi[cite: 18].",
+    file: "assets/Agronauta Verde Tríptico.pdf", fileLabel: "Ver Proyecto"
+  },
+  {
+    id: "05", category: "software", typeLabel: "Ingeniería 3D", title: "Diseño y Fabricación",
+    desc: "Procesos de diseño 3D, corte láser, moldes e impresión 3D.",
+    tags: ["SolidWorks", "Router CNC", "Impresión 3D", "Moldes"],
+    fullDesc: "Material educativo detallando el uso de programas como SolidWorks y Fusion 360 para crear geometrías complejas y prototipado rápido[cite: 17]. Aborda herramientas de fabricación desde router CNC para acrílico y madera, hasta impresión 3D y cortadoras láser[cite: 17].",
+    file: "assets/Proyecto de ingenieria.pdf", fileLabel: "Ver Detalles"
+  },
+  {
+    id: "06", category: "cert", typeLabel: "Certificación", title: "Siemens TIA Portal DC-3",
+    desc: "Programación avanzada de Controladores Lógicos Programables SIEMENS.",
+    tags: ["Siemens", "TIA Portal", "PLC", "DC-3"],
+    fullDesc: "Certificación de Competencias o Habilidades Laborales (Formato DC-3) en Programación avanzada de Controladores Lógicos Programables SIEMENS[cite: 20]. Consta de 60 horas de formación técnica en arquitectura S7-300 y S7-1200[cite: 12].",
+    file: "assets/DC3 SIEMENS- Rojas Robles Ivan.pdf", fileLabel: "Ver Certificado"
+  },
+  {
+    id: "07", category: "cert", typeLabel: "Certificación", title: "Masterclass 4.0 | IngeLearn",
     desc: "Capacitación en Python, Inteligencia Artificial y Ciberseguridad industrial.",
     tags: ["Industria 4.0", "Python", "IA", "Ciberseguridad"],
-    fullDesc: "Capacitación intensiva centrada en la aplicación de la inteligencia artificial, lenguajes de alto nivel como Python y protocolos de ciberseguridad adaptados a los retos de la Industria 4.0.",
-    file: "assets/CINGELEARN.pdf", fileLabel: "Ver Certificado"
+    fullDesc: "Certificado de Participación otorgado por finalizar la capacitación en Python, Inteligencia artificial, y Ciberseguridad aplicados a la Industria[cite: 15].",
+    file: "assets/Ivan-Rojas-3-6865D22A130B9-2025-07-02-21-43-22.pdf", fileLabel: "Ver Certificado"
+  },
+  {
+    id: "08", category: "cert", typeLabel: "Certificación", title: "Semana de la Automatización",
+    desc: "Entrenamiento especializado en programación de PLC por Control+.",
+    tags: ["PLC", "Automatización", "Simulación 3D"],
+    fullDesc: "Certificado de asistencia al entrenamiento especializado Semana de la Automatización Industrial[cite: 14]. Incluyó temas sobre simulación en 3D sin PLC físico e instrumentación con PLC para control de variables analógicas[cite: 14].",
+    file: "assets/Ivan Rojas Robles.pdf", fileLabel: "Ver Certificado"
+  },
+  {
+    id: "09", category: "invest", typeLabel: "Investigación", title: "The Trueque of Cholula",
+    desc: "Exploration of Pre-Hispanic Barter in Modern Puebla.",
+    tags: ["Intercultural", "Puebla", "Historia"],
+    fullDesc: "Proyecto cultural intercultural explorando la tradición del trueque en Cholula[cite: 16]. La investigación aborda esta tradición milenaria que data de tiempos prehispánicos, donde las comunidades intercambian bienes sin usar dinero[cite: 16].",
+    file: "assets/Poster intercultural.pdf", fileLabel: "Ver Póster"
   }
 ];
 
-/* ============================================================
-   THREE.JS — RED NEURONAL / CONSTELACIÓN
-   ============================================================ */
 (function initThree() {
   const canvas = document.getElementById('bg-canvas');
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
@@ -85,7 +82,6 @@ const projects = [
   const particlesGroup = new THREE.Group();
   scene.add(particlesGroup);
 
-  // Parámetros
   const particleCount = 200;
   const maxDistance = 1.8;
   const positions = new Float32Array(particleCount * 3);
@@ -122,7 +118,6 @@ const projects = [
   const linesMesh = new THREE.LineSegments(new THREE.BufferGeometry(), lineMat);
   particlesGroup.add(linesMesh);
 
-  // Mouse interaction
   const mouse = { x: 0, y: 0 };
   const tgt = { x: 0, y: 0 };
   window.addEventListener('mousemove', e => {
@@ -142,14 +137,12 @@ const projects = [
   (function tick() {
     requestAnimationFrame(tick);
     
-    // Movimiento fluido de cámara por el mouse
     tgt.x += (mouse.x - tgt.x) * 0.02;
     tgt.y += (mouse.y - tgt.y) * 0.02;
     particlesGroup.rotation.y = tgt.x * 0.3;
     particlesGroup.rotation.x = -tgt.y * 0.3;
     camera.position.y = -scrollY * 0.001;
 
-    // Animar posiciones y calcular conexiones
     const posAttr = pGeo.attributes.position;
     const linePositions = [];
     
@@ -164,7 +157,6 @@ const projects = [
 
       posAttr.setXYZ(i, x, y, z);
 
-      // Conexiones de línea basadas en distancia
       for (let j = i + 1; j < particleCount; j++) {
         const dx = x - posAttr.getX(j);
         const dy = y - posAttr.getY(j);
@@ -186,9 +178,6 @@ const projects = [
   })();
 })();
 
-/* ============================================================
-   CURSOR
-   ============================================================ */
 (function initCursor() {
   const cur = document.getElementById('cursor');
   const dot = document.getElementById('cursor-dot');
@@ -215,12 +204,9 @@ const projects = [
     });
   }
   bindCursor();
-  window.bindCursor = bindCursor; // Expose to re-bind when rendering projects
+  window.bindCursor = bindCursor; 
 })();
 
-/* ============================================================
-   RENDERIZAR TARJETAS Y FILTROS
-   ============================================================ */
 const grid = document.getElementById('projects-grid');
 const filterBtns = document.querySelectorAll('.filter-btn');
 
@@ -231,9 +217,8 @@ function renderProjects(filter = 'all') {
   
   filteredProjects.forEach((p, i) => {
     const card = document.createElement('div');
-    // Para no romper la animación de GSAP, usamos la clase reveal si no ha sido scrolleado aún
     card.className = 'project-card'; 
-    card.dataset.index = projects.indexOf(p); // Usar index original para el modal
+    card.dataset.index = projects.indexOf(p);
 
     card.innerHTML = `
       <span class="card-type ${p.category}">${p.typeLabel}</span>
@@ -245,7 +230,6 @@ function renderProjects(filter = 'all') {
       <div class="card-line"></div>
     `;
 
-    // Efecto 3D Tilt
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();
       const x = e.clientX - r.left;
@@ -261,8 +245,6 @@ function renderProjects(filter = 'all') {
     });
 
     card.addEventListener('click', () => openModal(card.dataset.index));
-    
-    // Pequeña animación de entrada al filtrar
     gsap.fromTo(card, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, delay: i * 0.05 });
     
     grid.appendChild(card);
@@ -281,9 +263,6 @@ filterBtns.forEach(btn => {
 
 renderProjects('all');
 
-/* ============================================================
-   MODAL
-   ============================================================ */
 const overlay = document.getElementById('modal-overlay');
 const modalClose = document.getElementById('modal-close');
 const modalCont = document.getElementById('modal-content');
@@ -313,19 +292,14 @@ modalClose.addEventListener('click', closeModal);
 overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-/* ============================================================
-   GSAP — ANIMACIONES GLOBALES
-   ============================================================ */
 gsap.registerPlugin(ScrollTrigger);
 
-// Hero intro
 const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 tl.to('#hero-sub', { opacity: 1, duration: 0.8, delay: 0.4 })
   .to('.hero-title .line', { opacity: 1, y: 0, duration: 1.1, stagger: 0.15 }, '-=0.4')
   .to('#hero-desc', { opacity: 1, duration: 0.7 }, '-=0.5')
   .to('#hero-actions', { opacity: 1, duration: 0.7 }, '-=0.4');
 
-// Scroll reveal simple
 gsap.utils.toArray('.reveal').forEach(el => {
   gsap.fromTo(el,
     { opacity: 0, y: 55 },
@@ -335,7 +309,6 @@ gsap.utils.toArray('.reveal').forEach(el => {
   );
 });
 
-// About Section
 gsap.from('.about-text', {
   opacity: 0, x: -55, duration: 1, ease: 'power3.out',
   scrollTrigger: { trigger: '.about-section', start: 'top 75%' }
@@ -349,7 +322,6 @@ gsap.from('.skill-chip', {
   scrollTrigger: { trigger: '.skills-grid', start: 'top 85%' }
 });
 
-// Animación de los labels de cada sección
 gsap.utils.toArray('.section-label').forEach(el => {
   gsap.from(el, { opacity: 0, x: -20, duration: 0.7, scrollTrigger: { trigger: el, start: 'top 90%' } });
 });
@@ -357,7 +329,6 @@ gsap.utils.toArray('.section-title').forEach(el => {
   gsap.from(el, { opacity: 0, y: 40, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } });
 });
 
-// Contadores numéricos
 document.querySelectorAll('.stat-num').forEach(el => {
   const target = parseInt(el.dataset.target);
   ScrollTrigger.create({
@@ -375,13 +346,11 @@ document.querySelectorAll('.stat-num').forEach(el => {
   });
 });
 
-// Contacto
 gsap.from('.contact-section .section-title, .contact-sub, .contact-link', {
   opacity: 0, y: 40, duration: 0.9, stagger: 0.15, ease: 'power3.out',
   scrollTrigger: { trigger: '.contact-section', start: 'top 80%' }
 });
 
-// Efecto Navbar blur en scroll
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
 });
