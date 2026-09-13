@@ -5,66 +5,80 @@
 
 const projects = [
   {
-    id: "01", category: "hardware", typeLabel: "IoT / Salud", title: "Pulsera de Monitoreo",
+    id: "01", category: "hardware", typeLabel: "Robótica / IA", title: "Androide Bioinspirado Azra",
+    desc: "Plataforma colaborativa para laboratorios enfocada en seguridad y tutoría.",
+    tags: ["Mecatrónica", "Seguridad", "IA", "Impresión 3D"],
+    fullDesc: "El androide bioinspirado Azra opera como una plataforma colaborativa para laboratorios de mecatrónica[cite: 25]. Está enfocado en salvaguardar la integridad física de los estudiantes previniendo accidentes y detectando conatos de incendio o gases tóxicos[cite: 25]. Asiste como tutor socrático ofreciendo pistas progresivas y evita el desperdicio masivo al identificar fallas tempranas en la impresión 3D[cite: 25].",
+    file: "assets/Resumen_Infografia_Azra.pdf", fileLabel: "Leer Resumen"
+  },
+  {
+    id: "02", category: "hardware", typeLabel: "IoT / Salud", title: "Pulsera de Monitoreo",
     desc: "Prototipo de monitoreo cardiaco portátil para adultos mayores vulnerables.",
     tags: ["ESP32", "MAX30102", "MPU-6050", "Firebase"],
-    fullDesc: "Desarrollo de un prototipo portátil en forma de pulsera para el monitoreo continuo de la actividad cardíaca[cite: 11]. El hardware integra un ESP32, un sensor biométrico MAX30102 para ritmo cardíaco y SpO2, y un acelerómetro MPU-6050[cite: 11]. Utiliza una aplicación móvil y conectividad a Firebase para intervenir oportunamente en casos críticos de aislamiento social[cite: 11].",
+    fullDesc: "Desarrollo de un prototipo portátil en forma de pulsera para el monitoreo continuo de la actividad cardíaca. El hardware integra un ESP32, un sensor biométrico MAX30102 para ritmo cardíaco y SpO2, y un acelerómetro MPU-6050. Utiliza una aplicación móvil y conectividad a Firebase para intervenir oportunamente en casos críticos.",
     file: "assets/Desarrollo de un prototipo port til de monitoreo cardiaco en forma de pulsera.pdf", fileLabel: "Leer Documento"
   },
   {
-    id: "02", category: "hardware", typeLabel: "Robótica", title: "Brazo Robótico",
+    id: "03", category: "hardware", typeLabel: "Robótica", title: "Brazo Robótico",
     desc: "Diseño CAD, corte láser y control con Arduino de un brazo funcional.",
-    tags: ["Arduino Uno", "SolidWorks", "Corte Láser", "MDF"],
-    fullDesc: "Diseño y construcción de un brazo robótico desde cero[cite: 19]. El proceso inició con modelado en SolidWorks, seguido de fabricación mediante corte láser en MDF de 3 mm[cite: 19]. Se ensambló integrando servomotores de 9g y se programó el control manual mediante potenciómetros conectados a un Arduino Uno[cite: 19].",
+    tags: ["Arduino", "SolidWorks", "Corte Láser", "MDF"],
+    fullDesc: "Diseño y construcción de un brazo robótico desde cero. El proceso inició con modelado en SolidWorks, seguido de fabricación mediante corte láser en MDF de 3 mm. Se ensambló integrando servomotores de 9g y se programó el control manual mediante potenciómetros conectados a un Arduino Uno.",
     file: "assets/Brazo Robotico.pdf", fileLabel: "Descargar Reporte"
   },
   {
-    id: "03", category: "hardware", typeLabel: "IA / Seguridad", title: "Casco Inteligente",
+    id: "04", category: "hardware", typeLabel: "IA / Seguridad", title: "Casco Inteligente",
     desc: "Sistema de seguridad activa para motociclistas con detección de accidentes.",
     tags: ["IA", "ESP32", "IMU", "GPS"],
-    fullDesc: "Casco inteligente con IA para detección y respuesta a accidentes de motociclistas[cite: 13]. Detecta impactos fuertes o caídas mediante un ESP32 integrado con sensores IMU y GPS[cite: 13]. Ante un accidente, inicia una cuenta regresiva que, de no cancelarse, envía alertas de emergencia automáticas[cite: 13].",
+    fullDesc: "Casco inteligente con IA para detección y respuesta a accidentes de motociclistas. Detecta impactos fuertes o caídas mediante un ESP32 integrado con sensores IMU y GPS. Ante un accidente, inicia una cuenta regresiva que, de no cancelarse, envía alertas de emergencia automáticas.",
     file: "assets/El Casco Inteligente con IA es un sistema de seguridad activa dise ado para motociclistas, capaz de detectar accidentes en tiempo real mediante la combina.pdf", fileLabel: "Leer Ensayo"
   },
   {
-    id: "04", category: "hardware", typeLabel: "Automatización", title: "Agronauta Verde",
+    id: "05", category: "hardware", typeLabel: "Automatización", title: "Agronauta Verde",
     desc: "Invernadero automatizado sustentable con paneles solares y control remoto.",
     tags: ["ESP32", "Sensores", "Bluetooth", "WiFi"],
-    fullDesc: "Proyecto enfocado en el cuidado del medio ambiente que utiliza un panel solar para alimentar el invernadero en su totalidad[cite: 18]. Permite sustituir al personal para operaciones de recolección y control desde vía remota mediante conectividad Bluetooth y WiFi[cite: 18].",
+    fullDesc: "Proyecto enfocado en el cuidado del medio ambiente que utiliza un panel solar para alimentar el invernadero en su totalidad. Permite sustituir al personal para operaciones de recolección y control desde vía remota mediante conectividad Bluetooth y WiFi.",
     file: "assets/Agronauta Verde Tríptico.pdf", fileLabel: "Ver Proyecto"
   },
   {
-    id: "05", category: "software", typeLabel: "Ingeniería 3D", title: "Diseño y Fabricación",
-    desc: "Procesos de diseño 3D, corte láser, moldes e impresión 3D.",
-    tags: ["SolidWorks", "Router CNC", "Impresión 3D", "Moldes"],
-    fullDesc: "Material educativo detallando el uso de programas como SolidWorks y Fusion 360 para crear geometrías complejas y prototipado rápido[cite: 17]. Aborda herramientas de fabricación desde router CNC para acrílico y madera, hasta impresión 3D y cortadoras láser[cite: 17].",
-    file: "assets/Proyecto de ingenieria.pdf", fileLabel: "Ver Detalles"
+    id: "06", category: "cert", typeLabel: "Certificación", title: "Diploma Siemens TIA Portal",
+    desc: "Programación y Automatización Industrial con PLC Siemens.",
+    tags: ["Siemens", "TIA Portal", "PLC"],
+    fullDesc: "Certificado de Reconocimiento otorgado por ABAG Engineering Solutions por haber concluido satisfactoriamente el curso de Programación y Automatización Industrial con PLC Siemens (TIA Portal) con una duración total de 60 horas de formación en línea[cite: 21].",
+    file: "assets/DIPLOMA SIEMENS - Rojas Robles Ivan_3.pdf", fileLabel: "Ver Diploma"
   },
   {
-    id: "06", category: "cert", typeLabel: "Certificación", title: "Siemens TIA Portal DC-3",
-    desc: "Programación avanzada de Controladores Lógicos Programables SIEMENS.",
-    tags: ["Siemens", "TIA Portal", "PLC", "DC-3"],
-    fullDesc: "Certificación de Competencias o Habilidades Laborales (Formato DC-3) en Programación avanzada de Controladores Lógicos Programables SIEMENS[cite: 20]. Consta de 60 horas de formación técnica en arquitectura S7-300 y S7-1200[cite: 12].",
-    file: "assets/DC3 SIEMENS- Rojas Robles Ivan.pdf", fileLabel: "Ver Certificado"
-  },
-  {
-    id: "07", category: "cert", typeLabel: "Certificación", title: "Masterclass 4.0 | IngeLearn",
-    desc: "Capacitación en Python, Inteligencia Artificial y Ciberseguridad industrial.",
-    tags: ["Industria 4.0", "Python", "IA", "Ciberseguridad"],
-    fullDesc: "Certificado de Participación otorgado por finalizar la capacitación en Python, Inteligencia artificial, y Ciberseguridad aplicados a la Industria[cite: 15].",
-    file: "assets/Ivan-Rojas-3-6865D22A130B9-2025-07-02-21-43-22.pdf", fileLabel: "Ver Certificado"
+    id: "07", category: "cert", typeLabel: "Certificación", title: "Constancia DC-3 Siemens",
+    desc: "Constancia de competencias en programación avanzada de PLCs Siemens.",
+    tags: ["Siemens", "DC-3", "STPS"],
+    fullDesc: "Formato DC-3 de la STPS que acredita como constancia de competencias o habilidades laborales el dominio en Programación avanzada de Controladores Lógicos Programables SIEMENS por 60 horas de duración[cite: 24].",
+    file: "assets/DC3 SIEMENS- Rojas Robles Ivan_3.pdf", fileLabel: "Ver Constancia"
   },
   {
     id: "08", category: "cert", typeLabel: "Certificación", title: "Semana de la Automatización",
     desc: "Entrenamiento especializado en programación de PLC por Control+.",
-    tags: ["PLC", "Automatización", "Simulación 3D"],
-    fullDesc: "Certificado de asistencia al entrenamiento especializado Semana de la Automatización Industrial[cite: 14]. Incluyó temas sobre simulación en 3D sin PLC físico e instrumentación con PLC para control de variables analógicas[cite: 14].",
-    file: "assets/Ivan Rojas Robles.pdf", fileLabel: "Ver Certificado"
+    tags: ["PLC", "Automatización", "Control+"],
+    fullDesc: "Certificado de asistencia al entrenamiento especializado Semana de la Automatización Industrial dictado por Control+[cite: 22]. Incluyó temas sobre simulación en 3D sin PLC físico e instrumentación con PLC para control de variables analógicas[cite: 22].",
+    file: "assets/Ivan Rojas Robles_3.pdf", fileLabel: "Ver Certificado"
   },
   {
-    id: "09", category: "invest", typeLabel: "Investigación", title: "The Trueque of Cholula",
+    id: "09", category: "cert", typeLabel: "Certificación", title: "Masterclass 4.0 | IngeLearn",
+    desc: "Capacitación en Python, Inteligencia Artificial y Ciberseguridad industrial.",
+    tags: ["Industria 4.0", "Python", "IA", "Ciberseguridad"],
+    fullDesc: "Certificado de Participación otorgado por IngeLearn por finalizar la capacitación Masterclass 4.0 en Python, Inteligencia artificial, y Ciberseguridad aplicados a la Industria, con una duración de 8 horas[cite: 23].",
+    file: "assets/Ivan-Rojas-3-6865D22A130B9-2025-07-02-21-43-22_3.pdf", fileLabel: "Ver Certificado"
+  },
+  {
+    id: "10", category: "software", typeLabel: "Ingeniería 3D", title: "Diseño y Fabricación",
+    desc: "Procesos de diseño 3D, corte láser, moldes e impresión 3D.",
+    tags: ["SolidWorks", "Router CNC", "Impresión 3D"],
+    fullDesc: "Material educativo detallando el uso de programas como SolidWorks y Fusion 360 para crear geometrías complejas y prototipado rápido. Aborda herramientas de fabricación desde router CNC para acrílico y madera, hasta impresión 3D y cortadoras láser.",
+    file: "assets/Proyecto de ingenieria.pdf", fileLabel: "Ver Detalles"
+  },
+  {
+    id: "11", category: "invest", typeLabel: "Investigación", title: "The Trueque of Cholula",
     desc: "Exploration of Pre-Hispanic Barter in Modern Puebla.",
     tags: ["Intercultural", "Puebla", "Historia"],
-    fullDesc: "Proyecto cultural intercultural explorando la tradición del trueque en Cholula[cite: 16]. La investigación aborda esta tradición milenaria que data de tiempos prehispánicos, donde las comunidades intercambian bienes sin usar dinero[cite: 16].",
+    fullDesc: "Proyecto cultural intercultural explorando la tradición del trueque en Cholula. La investigación aborda esta tradición milenaria que data de tiempos prehispánicos, donde las comunidades intercambian bienes sin usar dinero.",
     file: "assets/Poster intercultural.pdf", fileLabel: "Ver Póster"
   }
 ];
@@ -222,7 +236,7 @@ function renderProjects(filter = 'all') {
 
     card.innerHTML = `
       <span class="card-type ${p.category}">${p.typeLabel}</span>
-      <div class="card-number">${p.id} / 09</div>
+      <div class="card-number">${p.id} / 11</div>
       <h3 class="card-title">${p.title}</h3>
       <p class="card-desc">${p.desc}</p>
       <div class="card-tags">${p.tags.map(t => `<span class="card-tag">${t}</span>`).join('')}</div>
