@@ -155,4 +155,541 @@ const projects = [
     primaryCategory: "invest",
     typeLabel: "Investigación & Sociedad",
     title: "The Trueque of Cholula",
-    desc: "Estudio sobre la permanencia sociocultural y económica del trueque prehispánico tradicional en San
+    desc: "Estudio sobre la permanencia sociocultural y económica del trueque prehispánico tradicional en San Pedro y San Andrés Cholula.",
+    tags: ["Investigación", "Intercultural", "Puebla", "Historia"],
+    fullDesc: "Proyecto académico e interdisciplinario que analiza la vigencia milenaria del trueque en la región de Cholula, Puebla. Examina la economía solidaria, las relaciones comunitarias indígenas y la resistencia cultural de comerciar sin la intermediación de moneda en el mundo moderno.",
+    file: "assets/Poster intercultural.pdf",
+    fileLabel: "Ver Póster Académico",
+    issuer: "Universidad Iberoamericana Puebla",
+    isCert: false
+  }
+];
+
+/* ============================================================
+   CURSOR INTERACTIVO DE ALTA PRECISIÓN CON LOGO INTEGRADO
+   ============================================================ */
+(function initPrecisionCursorWithLogo() {
+  const cur = document.getElementById('cursor');
+  const dot = document.getElementById('cursor-dot');
+  if (!cur || !dot) return;
+
+  let cx = window.innerWidth / 2;
+  let cy = window.innerHeight / 2;
+  let dx = cx;
+  let dy = cy;
+  let isCursorVisible = false;
+
+  window.addEventListener('mousemove', e => {
+    dx = e.clientX;
+    dy = e.clientY;
+    dot.style.left = dx + 'px';
+    dot.style.top = dy + 'px';
+
+    if (!isCursorVisible) {
+      isCursorVisible = true;
+      cx = dx;
+      cy = dy;
+      cur.style.opacity = '1';
+      dot.style.opacity = '1';
+    }
+  });
+
+  document.addEventListener('mouseleave', () => {
+    cur.style.opacity = '0';
+    dot.style.opacity = '0';
+  });
+
+  document.addEventListener('mouseenter', () => {
+    if (isCursorVisible) {
+      cur.style.opacity = '1';
+      dot.style.opacity = '1';
+    }
+  });
+
+  function moveCur() {
+    cx += (dx - cx) * 0.16;
+    cy += (dy - cy) * 0.16;
+    cur.style.left = cx + 'px';
+    cur.style.top = cy + 'px';
+    requestAnimationFrame(moveCur);
+  }
+  moveCur();
+
+  function bindCursor() {
+    document.querySelectorAll('a, button, .project-card, .skill-chip, .stat-item, .contact-card, .filter-btn, input').forEach(el => {
+      el.removeEventListener('mouseenter', onMouseEnter);
+      el.removeEventListener('mouseleave', onMouseLeave);
+      el.addEventListener('mouseenter', onMouseEnter);
+      el.addEventListener('mouseleave', onMouseLeave);
+    });
+  }
+
+  function onMouseEnter() { cur.classList.add('active'); }
+  function onMouseLeave() { cur.classList.remove('active'); }
+
+  bindCursor();
+  window.bindCursor = bindCursor;
+})();
+
+/* ============================================================
+   FONDO 3D CON THREE.JS (RED NEURONAL OPTIMIZADA)
+   ============================================================ */
+(function initNeuralNetwork() {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = 4.2;
+
+  const particlesGroup = new THREE.Group();
+  scene.add(particlesGroup);
+
+  const particleCount = 130;
+  const maxDistance = 1.7;
+  const maxDistanceSq = maxDistance * maxDistance;
+  const positions = new Float32Array(particleCount * 3);
+  const velocities = [];
+
+  for (let i = 0; i < particleCount; i++) {
+    positions[i * 3]     = (Math.random() - 0.5) * 11;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 11;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 4;
+    velocities.push({
+      x: (Math.random() - 0.5) * 0.0035,
+      y: (Math.random() - 0.5) * 0.0035,
+      z: (Math.random() - 0.5) * 0.0035
+    });
+  }
+
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+  const pMat = new THREE.PointsMaterial({
+    color: 0x7effd4,
+    size: 0.045,
+    transparent: true,
+    opacity: 0.85
+  });
+  const pointCloud = new THREE.Points(pGeo, pMat);
+  particlesGroup.add(pointCloud);
+
+  // Buffer de líneas preasignado para máximo rendimiento (sin reasignar atributos 60fps)
+  const maxLines = 450;
+  const linePositions = new Float32Array(maxLines * 6);
+  const lineGeo = new THREE.BufferGeometry();
+  lineGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+
+  const lineMat = new THREE.LineBasicMaterial({
+    color: 0xb57bff,
+    transparent: true,
+    opacity: 0.18
+  });
+  const linesMesh = new THREE.LineSegments(lineGeo, lineMat);
+  particlesGroup.add(linesMesh);
+
+  const mouse = { x: 0, y: 0 };
+  const tgt = { x: 0, y: 0 };
+
+  window.addEventListener('mousemove', e => {
+    mouse.x = (e.clientX / window.innerWidth - 0.5) * 2;
+    mouse.y = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  let scrollY = 0;
+  window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
+
+  function tick() {
+    requestAnimationFrame(tick);
+
+    tgt.x += (mouse.x - tgt.x) * 0.03;
+    tgt.y += (mouse.y - tgt.y) * 0.03;
+
+    particlesGroup.rotation.y = tgt.x * 0.25;
+    particlesGroup.rotation.x = -tgt.y * 0.25;
+    camera.position.y = -scrollY * 0.0008;
+
+    const posAttr = pGeo.attributes.position;
+    let lineIdx = 0;
+
+    for (let i = 0; i < particleCount; i++) {
+      let px = posAttr.getX(i) + velocities[i].x;
+      let py = posAttr.getY(i) + velocities[i].y;
+      let pz = posAttr.getZ(i) + velocities[i].z;
+
+      if (px > 5.5 || px < -5.5) velocities[i].x *= -1;
+      if (py > 5.5 || py < -5.5) velocities[i].y *= -1;
+      if (pz > 2   || pz < -2)   velocities[i].z *= -1;
+
+      posAttr.setXYZ(i, px, py, pz);
+
+      for (let j = i + 1; j < particleCount; j++) {
+        if (lineIdx >= maxLines * 6) break;
+        const jx = posAttr.getX(j);
+        const jy = posAttr.getY(j);
+        const jz = posAttr.getZ(j);
+
+        const dx = px - jx;
+        const dy = py - jy;
+        const dz = pz - jz;
+        const distSq = dx * dx + dy * dy + dz * dz;
+
+        if (distSq < maxDistanceSq) {
+          linePositions[lineIdx++] = px;
+          linePositions[lineIdx++] = py;
+          linePositions[lineIdx++] = pz;
+          linePositions[lineIdx++] = jx;
+          linePositions[lineIdx++] = jy;
+          linePositions[lineIdx++] = jz;
+        }
+      }
+    }
+
+    posAttr.needsUpdate = true;
+    lineGeo.setDrawRange(0, lineIdx / 3);
+    lineGeo.attributes.position.needsUpdate = true;
+
+    renderer.render(scene, camera);
+  }
+  tick();
+})();
+
+/* ============================================================
+   MOTOR DE FILTRADO Y BÚSQUEDA DE PROYECTOS / CERTIFICACIONES
+   ============================================================ */
+const grid = document.getElementById('projects-grid');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const searchInput = document.getElementById('project-search');
+
+let currentFilter = 'all';
+let currentSearch = '';
+
+function renderProjects() {
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  let filtered = projects;
+
+  // Filtrado por categoría
+  if (currentFilter === 'cert') {
+    filtered = filtered.filter(p => p.isCert || p.categories.includes('cert'));
+  } else if (currentFilter !== 'all') {
+    filtered = filtered.filter(p => p.categories.includes(currentFilter));
+  }
+
+  // Filtrado por texto de búsqueda en tiempo real
+  if (currentSearch.trim() !== '') {
+    const q = currentSearch.toLowerCase();
+    filtered = filtered.filter(p => 
+      p.title.toLowerCase().includes(q) ||
+      p.desc.toLowerCase().includes(q) ||
+      p.tags.some(t => t.toLowerCase().includes(q)) ||
+      (p.issuer && p.issuer.toLowerCase().includes(q))
+    );
+  }
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-muted); font-family: var(--font-m);">
+        <p style="font-size: 1.1rem; margin-bottom: 0.8rem; color: var(--accent);">No se encontraron proyectos con ese criterio.</p>
+        <button onclick="document.getElementById('project-search').value=''; currentSearch=''; renderProjects();" class="cta-btn secondary" style="margin-top: 1rem;">Limpiar búsqueda</button>
+      </div>
+    `;
+    return;
+  }
+
+  filtered.forEach((p, i) => {
+    const originalIndex = projects.indexOf(p);
+    const card = document.createElement('div');
+    card.className = `project-card ${p.isCert ? 'is-cert' : ''}`;
+    card.dataset.index = originalIndex;
+
+    const certRibbon = p.isCert 
+      ? `<div class="cert-badge-ribbon">${p.badgeText || 'Certificación Validada'}</div>` 
+      : '';
+      
+    const issuerTag = p.issuer 
+      ? `<div class="card-issuer">${p.issuer}</div>` 
+      : '';
+
+    const safeFilePath = encodeURI(p.file);
+
+    card.innerHTML = `
+      <span class="card-type ${p.primaryCategory}">${p.typeLabel}</span>
+      <div class="card-number">${p.id} / 11</div>
+      ${certRibbon}
+      <h3 class="card-title">${p.title}</h3>
+      ${issuerTag}
+      <p class="card-desc">${p.desc}</p>
+      <div class="card-tags">${p.tags.map(t => `<span class="card-tag">${t}</span>`).join('')}</div>
+      
+      <div class="card-bottom-actions">
+        <span class="card-cta">
+          <span>Ver Detalle</span>
+          <span class="card-arrow">→</span>
+        </span>
+        ${p.isCert ? `<a href="${safeFilePath}" target="_blank" rel="noopener noreferrer" class="direct-pdf-btn" onclick="event.stopPropagation()">PDF ↗</a>` : ''}
+      </div>
+      <div class="card-line"></div>
+    `;
+
+    // Efecto 3D Dinámico de Inclinación al pasar el mouse
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      const rx = ((y - r.height / 2) / r.height) * -6;
+      const ry = ((x - r.width / 2) / r.width) * 6;
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+      card.style.setProperty('--mx', (x / r.width * 100) + '%');
+      card.style.setProperty('--my', (y / r.height * 100) + '%');
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(900px) rotateX(0) rotateY(0) translateY(0)';
+    });
+
+    // Abrir modal de detalle completo
+    card.addEventListener('click', () => openModal(originalIndex));
+
+    // Animación suave de entrada con GSAP
+    if (typeof gsap !== 'undefined') {
+      gsap.fromTo(card, 
+        { opacity: 0, y: 25, scale: 0.97 }, 
+        { opacity: 1, y: 0, scale: 1, duration: 0.4, delay: i * 0.04, ease: 'power2.out' }
+      );
+    }
+
+    grid.appendChild(card);
+  });
+
+  if (window.bindCursor) window.bindCursor();
+}
+
+// Escuchar cambios de filtro
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderProjects();
+  });
+});
+
+// Escuchar búsqueda en tiempo real
+if (searchInput) {
+  searchInput.addEventListener('input', e => {
+    currentSearch = e.target.value;
+    renderProjects();
+  });
+}
+
+// Función accesible globalmente para seleccionar filtro
+window.selectFilter = function(category) {
+  currentFilter = category;
+  filterBtns.forEach(b => {
+    if (b.dataset.filter === category) {
+      b.classList.add('active');
+    } else {
+      b.classList.remove('active');
+    }
+  });
+  renderProjects();
+};
+
+// Renderizado inicial
+renderProjects();
+
+/* ============================================================
+   MODAL DE DETALLE COMPLETO DE PROYECTO / CERTIFICADO
+   ============================================================ */
+const overlay = document.getElementById('modal-overlay');
+const modalClose = document.getElementById('modal-close');
+const modalCont = document.getElementById('modal-content');
+
+function openModal(index) {
+  const p = projects[index];
+  if (!p || !modalCont) return;
+
+  const safeFilePath = encodeURI(p.file);
+  const isCertificate = p.isCert || p.categories.includes('cert');
+
+  modalCont.innerHTML = `
+    <p class="modal-pre">${p.id} · ${p.typeLabel.toUpperCase()}</p>
+    <h2 class="modal-title">${p.title}</h2>
+    ${p.issuer ? `<div class="modal-issuer-box"><span>Emisor / Acreditación:</span> <strong>${p.issuer}</strong></div>` : ''}
+    <div class="modal-tag-row">${p.tags.map(t => `<span class="card-tag">${t}</span>`).join('')}</div>
+    <p class="modal-desc">${p.fullDesc}</p>
+    <div class="modal-links">
+      <a href="${safeFilePath}" target="_blank" rel="noopener noreferrer" class="modal-link-btn ${isCertificate ? 'gold' : 'primary'}">
+        <span>${p.fileLabel || 'Abrir Documento Oficial'}</span>
+        <span>↗</span>
+      </a>
+    </div>
+  `;
+
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  if (window.bindCursor) window.bindCursor();
+}
+
+function closeModal() {
+  if (!overlay) return;
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+if (modalClose) modalClose.addEventListener('click', closeModal);
+if (overlay) overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ============================================================
+   ANIMACIONES GSAP & SCROLLTRIGGER
+   ============================================================ */
+if (typeof gsap !== 'undefined') {
+  if (typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
+  // Animaciones de Entrada en Hero (USANDO FROM PARA GARANTIZAR VISIBILIDAD)
+  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  heroTl.from('#hero-sub', { opacity: 0, y: -20, duration: 0.8, delay: 0.15 })
+        .from('.hero-title .line', { opacity: 0, y: 50, duration: 1, stagger: 0.15 }, '-=0.4')
+        .from('#hero-desc', { opacity: 0, y: 25, duration: 0.8 }, '-=0.5')
+        .from('#hero-actions', { opacity: 0, y: 25, duration: 0.8 }, '-=0.5')
+        .from('.hero-quick-tags', { opacity: 0, y: 15, duration: 0.7 }, '-=0.4');
+
+  // Animaciones al hacer Scroll
+  if (typeof ScrollTrigger !== 'undefined') {
+    gsap.utils.toArray('.reveal').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.85,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+        }
+      );
+    });
+
+    gsap.from('.about-text', {
+      opacity: 0,
+      x: -45,
+      duration: 0.95,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.about-section', start: 'top 75%' }
+    });
+
+    gsap.from('.about-right', {
+      opacity: 0,
+      x: 45,
+      duration: 0.95,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.about-section', start: 'top 75%' }
+    });
+
+    gsap.from('.skill-chip', {
+      opacity: 0,
+      scale: 0.8,
+      duration: 0.45,
+      stagger: 0.04,
+      ease: 'back.out(1.5)',
+      scrollTrigger: { trigger: '.skills-grid', start: 'top 85%' }
+    });
+
+    // Contador Numérico para las Estadísticas de la Cabina
+    document.querySelectorAll('.stat-num').forEach(el => {
+      const target = parseInt(el.dataset.target, 10);
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        onEnter: () => {
+          let count = 0;
+          const durationMs = 1200;
+          const steps = 30;
+          const stepValue = Math.ceil(target / steps) || 1;
+          const interval = durationMs / steps;
+
+          const timer = setInterval(() => {
+            count = Math.min(count + stepValue, target);
+            el.textContent = count;
+            if (count >= target) clearInterval(timer);
+          }, interval);
+        }
+      });
+    });
+  }
+}
+
+/* ============================================================
+   UTILIDADES: MENÚ MÓVIL, SCROLLSPY Y VOLVER ARRIBA
+   ============================================================ */
+const mobileToggle = document.getElementById('mobile-toggle');
+const mobileDrawer = document.getElementById('mobile-drawer');
+
+if (mobileToggle && mobileDrawer) {
+  mobileToggle.addEventListener('click', () => {
+    mobileToggle.classList.toggle('open');
+    mobileDrawer.classList.toggle('open');
+  });
+}
+
+window.closeMobileMenu = function() {
+  if (mobileToggle && mobileDrawer) {
+    mobileToggle.classList.remove('open');
+    mobileDrawer.classList.remove('open');
+  }
+};
+
+// Botón Volver Arriba
+const backToTop = document.getElementById('back-to-top');
+if (backToTop) {
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// Scroll Event (Navbar Scrolled + Back to top + ScrollSpy)
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+window.addEventListener('scroll', () => {
+  const scrollPos = window.scrollY;
+
+  // Navbar scrolled class
+  const nav = document.getElementById('navbar');
+  if (nav) nav.classList.toggle('scrolled', scrollPos > 50);
+
+  // Back to top button visibility
+  if (backToTop) {
+    backToTop.classList.toggle('visible', scrollPos > 400);
+  }
+
+  // ScrollSpy
+  sections.forEach(sec => {
+    const top = sec.offsetTop - 120;
+    const height = sec.offsetHeight;
+    const id = sec.getAttribute('id');
+
+    if (scrollPos >= top && scrollPos < top + height) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${id}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+}, { passive: true });

@@ -18,9 +18,17 @@
   <!-- Fondo Canvas 3D Interactivo (Red Neuronal) -->
   <canvas id="bg-canvas"></canvas>
 
-  <!-- Cursor Personalizado de Precisión -->
-  <div class="cursor" id="cursor"></div>
+  <!-- Cursor Personalizado de Precisión con Logo Integrado -->
+  <div class="cursor" id="cursor">
+    <div class="cursor-logo-wrap">
+      <img src="assets/logo.png" alt="Logo" class="cursor-logo" onerror="this.style.display='none'; document.getElementById('cursor-fallback').style.display='block';">
+      <span class="cursor-fallback-text" id="cursor-fallback">IR</span>
+    </div>
+  </div>
   <div class="cursor-dot" id="cursor-dot"></div>
+
+  <!-- Botón Flotante para Volver al Inicio -->
+  <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">↑</button>
 
   <!-- Navegación Superior -->
   <nav class="navbar" id="navbar">
@@ -28,19 +36,44 @@
       <img src="assets/logo.png" alt="Logo Iván Rojas" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
       <span class="logo-fallback">IR<span class="accent">.</span></span>
     </a>
-    <ul class="nav-links">
-      <li><a href="#hero">Inicio</a></li>
-      <li><a href="#about">Perfil</a></li>
-      <li><a href="#projects">Proyectos</a></li>
-      <li><a href="#projects" class="nav-certs-link" onclick="setTimeout(()=>selectFilter('cert'), 100)">Certificaciones <span class="cert-nav-pill">4</span></a></li>
-      <li><a href="#cabin">Impacto</a></li>
-      <li><a href="#contact">Contacto</a></li>
+    
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#hero" class="nav-link active">Inicio</a></li>
+      <li><a href="#about" class="nav-link">Perfil</a></li>
+      <li><a href="#projects" class="nav-link">Proyectos</a></li>
+      <li>
+        <a href="#projects" class="nav-link nav-certs-link" onclick="setTimeout(()=>selectFilter('cert'), 80)">
+          Certificaciones <span class="cert-nav-pill">4</span>
+        </a>
+      </li>
+      <li><a href="#cabin" class="nav-link">Impacto</a></li>
+      <li><a href="#contact" class="nav-link">Contacto</a></li>
     </ul>
-    <div class="nav-status">
-      <div class="badge-ring"></div>
-      <span class="nav-status-text">Disponible para Proyectos</span>
+
+    <div class="nav-right">
+      <div class="nav-status">
+        <div class="badge-ring"></div>
+        <span class="nav-status-text">Disponible</span>
+      </div>
+      
+      <!-- Botón Menú Móvil (Hamburguesa) -->
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
+
+  <!-- Menú Drawer Móvil -->
+  <div class="mobile-nav-drawer" id="mobile-drawer">
+    <a href="#hero" class="mobile-nav-link" onclick="closeMobileMenu()">Inicio</a>
+    <a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()">Perfil</a>
+    <a href="#projects" class="mobile-nav-link" onclick="closeMobileMenu()">Proyectos</a>
+    <a href="#projects" class="mobile-nav-link gold" onclick="closeMobileMenu(); setTimeout(()=>selectFilter('cert'), 150)">Certificaciones (4 Oficiales)</a>
+    <a href="#cabin" class="mobile-nav-link" onclick="closeMobileMenu()">Impacto & Cabina</a>
+    <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()">Contacto</a>
+  </div>
 
   <!-- Hero Section -->
   <section id="hero" class="hero-section">
@@ -49,16 +82,19 @@
         <span class="pulse-icon"></span>
         Ingeniería Mecatrónica & Sistemas Embebidos
       </div>
+      
       <h1 class="hero-title" id="hero-title">
         <span class="line">Iván</span>
         <span class="line text-gradient">Rojas<span class="accent">.</span></span>
       </h1>
+      
       <p class="hero-desc" id="hero-desc">
-        Técnico en Electrónica (CBTis 260) · Estudiante en Ibero Puebla · Automatización Industrial con Siemens TIA Portal · Robótica & Visión por Computadora (IA).
+        Técnico en Electrónica (CBTis 260) · Estudiante en Universidad Iberoamericana Puebla · Automatización Industrial con Siemens TIA Portal · Robótica & Visión por Computadora (IA).
       </p>
+      
       <div class="hero-actions" id="hero-actions">
         <a href="#projects" class="cta-btn primary">
-          <span>Explorar Trabajo</span>
+          <span>Explorar Proyectos</span>
           <span class="btn-arrow">→</span>
         </a>
         <button class="cta-btn cert-cta" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'}); selectFilter('cert');">
@@ -69,6 +105,14 @@
           <span>Descargar CV</span>
           <span class="btn-icon">↗</span>
         </a>
+      </div>
+
+      <!-- Micro Badges de Especialidad -->
+      <div class="hero-quick-tags">
+        <span class="quick-pill">⚡ Siemens PLC & STPS</span>
+        <span class="quick-pill">🤖 Robótica & SolidWorks</span>
+        <span class="quick-pill">🧠 Visión Artificial (YOLO/OpenCV)</span>
+        <span class="quick-pill">☁️ IoT & Cloud (ESP32/Firebase)</span>
       </div>
     </div>
     
@@ -89,7 +133,7 @@
             <span class="text-gradient">Técnico en Electrónica</span>.
           </h2>
           <p class="about-lead">
-            Soy <strong>Iván Rojas Robles</strong>, estudiante de Ingeniería Mecatrónica en la <strong>Universidad Iberoamericana Puebla</strong> (Generación 2026) y Técnico en Electrónica egresado del <strong>CBTis 260</strong>.
+            Soy <strong>Iván Rojas Robles</strong>, estudiante de Ingeniería Mecatrónica en la <strong>Universidad Iberoamericana Puebla</strong> (Generación 2026) y egresado como Técnico en Electrónica del <strong>CBTis 260</strong>.
           </p>
           <p>
             Cuento con sólida experiencia práctica en servicio técnico, diagnóstico y mantenimiento correctivo/preventivo a maquinaria e instrumentación hospitalaria, además de diseñar y fabricar sistemas mecatrónicos desde el prototipado rápido en CAD hasta la integración embebida.
@@ -162,7 +206,15 @@
           <h2 class="section-title">Trabajo & <span class="text-gradient">Certificaciones</span></h2>
         </div>
         
-        <!-- Filtros Dinámicos con Conteo -->
+        <!-- Barra de Búsqueda en Tiempo Real -->
+        <div class="search-box-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="project-search" placeholder="Buscar por tecnología, PLC, IA..." aria-label="Buscar proyectos" autocomplete="off" />
+        </div>
+      </div>
+
+      <!-- Contenedor de Filtros Dinámicos con Conteo -->
+      <div class="filter-wrapper">
         <div class="filter-container">
           <button class="filter-btn active" data-filter="all">
             Todos <span class="filter-count" id="count-all">11</span>
@@ -207,6 +259,7 @@
       <div class="cabin-stats">
         <div class="stat-item reveal">
           <div class="stat-glow"></div>
+          <span class="stat-icon-top">🛠️</span>
           <span class="stat-num" data-target="11">11</span>
           <span class="stat-label">Proyectos & Entregables</span>
           <span class="stat-sub">Hardware, Software y Reportes</span>
@@ -214,6 +267,7 @@
         
         <div class="stat-item reveal stat-highlight">
           <div class="stat-glow gold"></div>
+          <span class="stat-icon-top">🎓</span>
           <span class="stat-num gold-num" data-target="4">4</span>
           <span class="stat-label">Certificaciones Oficiales</span>
           <span class="stat-sub">Siemens, STPS DC-3, IngeLearn, Control+</span>
@@ -221,6 +275,7 @@
         
         <div class="stat-item reveal">
           <div class="stat-glow"></div>
+          <span class="stat-icon-top">⏱️</span>
           <span class="stat-num" data-target="60">60</span>
           <span class="stat-label">Horas Capacitación Siemens</span>
           <span class="stat-sub">Automatización en TIA Portal</span>
@@ -228,6 +283,7 @@
         
         <div class="stat-item reveal">
           <div class="stat-glow"></div>
+          <span class="stat-icon-top">⚡</span>
           <span class="stat-num" data-target="100">100</span>
           <span class="stat-label">% Fusión Físico-Digital</span>
           <span class="stat-sub">De la señal electrónica a la Nube</span>
