@@ -3,149 +3,286 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Iván Rojas | Portafolio de Ingeniería</title>
+  <title>Iván Rojas | Portafolio de Ingeniería & Mecatrónica</title>
+  <meta name="description" content="Portafolio profesional de Iván Rojas Robles: Ingeniero Mecatrónico en formación, Técnico en Electrónica, Automatización Industrial con Siemens PLC, IoT y Software con IA." />
+  
+  <!-- Tipografías de Alta Fidelidad -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+  <!-- Fondo Canvas 3D Interactivo (Red Neuronal) -->
   <canvas id="bg-canvas"></canvas>
 
+  <!-- Cursor Personalizado de Precisión -->
   <div class="cursor" id="cursor"></div>
   <div class="cursor-dot" id="cursor-dot"></div>
 
+  <!-- Navegación Superior -->
   <nav class="navbar" id="navbar">
     <a href="#hero" class="nav-logo">
-      <img src="assets/logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+      <img src="assets/logo.png" alt="Logo Iván Rojas" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
       <span class="logo-fallback">IR<span class="accent">.</span></span>
     </a>
     <ul class="nav-links">
       <li><a href="#hero">Inicio</a></li>
       <li><a href="#about">Perfil</a></li>
       <li><a href="#projects">Proyectos</a></li>
+      <li><a href="#projects" class="nav-certs-link" onclick="setTimeout(()=>selectFilter('cert'), 100)">Certificaciones <span class="cert-nav-pill">4</span></a></li>
       <li><a href="#cabin">Impacto</a></li>
       <li><a href="#contact">Contacto</a></li>
     </ul>
     <div class="nav-status">
       <div class="badge-ring"></div>
-      <span>Disponible</span>
+      <span class="nav-status-text">Disponible para Proyectos</span>
     </div>
   </nav>
 
+  <!-- Hero Section -->
   <section id="hero" class="hero-section">
     <div class="hero-content">
-      <p class="hero-sub" id="hero-sub">Ingeniería Mecatrónica & Desarrollo de Software</p>
+      <div class="hero-tag-badge" id="hero-sub">
+        <span class="pulse-icon"></span>
+        Ingeniería Mecatrónica & Sistemas Embebidos
+      </div>
       <h1 class="hero-title" id="hero-title">
         <span class="line">Iván</span>
         <span class="line text-gradient">Rojas<span class="accent">.</span></span>
       </h1>
-      <p class="hero-desc" id="hero-desc">Técnico en Electrónica · Automatización Industrial · Robótica · IoT</p>
+      <p class="hero-desc" id="hero-desc">
+        Técnico en Electrónica (CBTis 260) · Estudiante en Ibero Puebla · Automatización Industrial con Siemens TIA Portal · Robótica & Visión por Computadora (IA).
+      </p>
       <div class="hero-actions" id="hero-actions">
-        <a href="#projects" class="cta-btn primary">Ver proyectos <span class="btn-arrow">→</span></a>
-        <a href="assets/CV.pdf" target="_blank" class="cta-btn secondary">Descargar CV</a>
+        <a href="#projects" class="cta-btn primary">
+          <span>Explorar Trabajo</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <button class="cta-btn cert-cta" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'}); selectFilter('cert');">
+          <span>Ver 4 Certificaciones</span>
+          <span class="badge-certs-count">★</span>
+        </button>
+        <a href="assets/CV.pdf" target="_blank" rel="noopener noreferrer" class="cta-btn secondary">
+          <span>Descargar CV</span>
+          <span class="btn-icon">↗</span>
+        </a>
       </div>
     </div>
+    
     <div class="hero-scroll-hint">
       <div class="scroll-line"></div>
-      <span>scroll</span>
+      <span>SCROLL</span>
     </div>
   </section>
 
+  <!-- Sección 01: Perfil Profesional -->
   <section id="about" class="about-section">
     <div class="section-inner">
-      <div class="section-label">01 — Perfil</div>
+      <div class="section-label">01 — Perfil Técnico</div>
       <div class="about-grid">
         <div class="about-text">
-          <h2>Ingeniero Mecatrónico en formación,<br><span class="text-gradient">Técnico en Electrónica</span>.</h2>
-          <p>¡Hola! Soy Iván Rojas Robles. Actualmente estudio Ingeniería Mecatrónica en la <strong>Universidad Iberoamericana Puebla</strong> (Generación 2026) y soy egresado como Técnico en Electrónica del <strong>CBTis 260</strong>.</p>
-          <p>Cuento con experiencia técnica práctica brindando servicio y mantenimiento a maquinaria hospitalaria, además de desarrollar prototipos integrales. Me apasiona conectar el hardware (ESP32, Raspberry Pi, PLCs Siemens) con el software y la nube (Python, C++, React Native, Firebase) para crear soluciones de automatización, IoT e Inteligencia Artificial aplicada.</p>
+          <h2 class="about-heading">
+            Ingeniero Mecatrónico en formación,<br>
+            <span class="text-gradient">Técnico en Electrónica</span>.
+          </h2>
+          <p class="about-lead">
+            Soy <strong>Iván Rojas Robles</strong>, estudiante de Ingeniería Mecatrónica en la <strong>Universidad Iberoamericana Puebla</strong> (Generación 2026) y Técnico en Electrónica egresado del <strong>CBTis 260</strong>.
+          </p>
+          <p>
+            Cuento con sólida experiencia práctica en servicio técnico, diagnóstico y mantenimiento correctivo/preventivo a maquinaria e instrumentación hospitalaria, además de diseñar y fabricar sistemas mecatrónicos desde el prototipado rápido en CAD hasta la integración embebida.
+          </p>
+          <p>
+            Mi enfoque une el hardware de control (<span class="code-hl">PLCs Siemens</span>, <span class="code-hl">ESP32</span>, <span class="code-hl">Raspberry Pi</span>) con la capa lógica de software y la nube (<span class="code-hl">Python</span>, <span class="code-hl">C++</span>, <span class="code-hl">React Native</span>, <span class="code-hl">Firebase</span>, <span class="code-hl">OpenCV/YOLO</span>).
+          </p>
+          
+          <div class="about-highlights">
+            <div class="hl-card">
+              <span class="hl-num">04</span>
+              <span class="hl-label">Certificaciones Industriales</span>
+            </div>
+            <div class="hl-card">
+              <span class="hl-num">60h</span>
+              <span class="hl-label">Capacitación Siemens TIA Portal</span>
+            </div>
+            <div class="hl-card">
+              <span class="hl-num">DC-3</span>
+              <span class="hl-label">Competencias STPS Validadas</span>
+            </div>
+          </div>
         </div>
+
         <div class="about-right">
-          <div class="skills-label">Stack & Herramientas</div>
-          <div class="skills-grid">
-            <div class="skill-chip">C++ / Python / JS</div>
-            <div class="skill-chip">React Native / Expo</div>
-            <div class="skill-chip">ESP32 / Raspberry Pi</div>
-            <div class="skill-chip">Siemens TIA Portal</div>
-            <div class="skill-chip">SolidWorks / CAD</div>
-            <div class="skill-chip">Firebase / Supabase</div>
-            <div class="skill-chip">Flask / PHP / SQL</div>
-            <div class="skill-chip">YOLO / OpenCV</div>
+          <div class="skills-label">Dominio Técnico & Herramientas</div>
+          <div class="skills-group">
+            <span class="group-title">Control & Automatización</span>
+            <div class="skills-grid">
+              <div class="skill-chip active-tech">Siemens TIA Portal</div>
+              <div class="skill-chip active-tech">PLC S7-1200 / 1500</div>
+              <div class="skill-chip active-tech">Norma STPS DC-3</div>
+              <div class="skill-chip">Simulación 3D (Control+)</div>
+              <div class="skill-chip">Instrumentación Industrial</div>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <span class="group-title">Hardware & Sistemas Embebidos</span>
+            <div class="skills-grid">
+              <div class="skill-chip">ESP32 / ESP8266</div>
+              <div class="skill-chip">Arduino / C++</div>
+              <div class="skill-chip">Raspberry Pi</div>
+              <div class="skill-chip">Sensores Biomédicos / IoT</div>
+              <div class="skill-chip">Electrónica de Potencia</div>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <span class="group-title">Software, IA & CAD</span>
+            <div class="skills-grid">
+              <div class="skill-chip">Python / OpenCV / YOLO</div>
+              <div class="skill-chip">React Native / Mobile</div>
+              <div class="skill-chip">Firebase / Supabase</div>
+              <div class="skill-chip">SolidWorks & Corte Láser</div>
+              <div class="skill-chip">Router CNC & Impresión 3D</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Sección 02: Proyectos & Certificaciones -->
   <section id="projects" class="projects-section">
     <div class="section-inner">
-      <div class="section-label">02 — Proyectos & Certificaciones</div>
-      <div class="projects-header">
-        <h2 class="section-title">Trabajo destacado</h2>
+      <div class="projects-top-bar">
+        <div>
+          <div class="section-label">02 — Portafolio de Ingeniería</div>
+          <h2 class="section-title">Trabajo & <span class="text-gradient">Certificaciones</span></h2>
+        </div>
+        
+        <!-- Filtros Dinámicos con Conteo -->
         <div class="filter-container">
-          <button class="filter-btn active" data-filter="all">Todos</button>
-          <button class="filter-btn" data-filter="software">Software & IA</button>
-          <button class="filter-btn" data-filter="hardware">Mecatrónica & IoT</button>
-          <button class="filter-btn" data-filter="cert">Certificaciones</button>
+          <button class="filter-btn active" data-filter="all">
+            Todos <span class="filter-count" id="count-all">11</span>
+          </button>
+          <button class="filter-btn" data-filter="hardware">
+            Mecatrónica & IoT <span class="filter-count" id="count-hardware">5</span>
+          </button>
+          <button class="filter-btn" data-filter="software">
+            Software & IA <span class="filter-count" id="count-software">4</span>
+          </button>
+          <button class="filter-btn cert-filter-btn" data-filter="cert">
+            ★ Certificaciones <span class="filter-count" id="count-cert">4</span>
+          </button>
+          <button class="filter-btn" data-filter="invest">
+            Investigación <span class="filter-count" id="count-invest">1</span>
+          </button>
         </div>
       </div>
+
+      <!-- Cuadrícula Dinámica de Tarjetas -->
       <div class="projects-grid" id="projects-grid"></div>
     </div>
   </section>
 
+  <!-- Modal Emergente de Detalle de Proyecto / Certificado -->
   <div class="modal-overlay" id="modal-overlay">
     <div class="modal-card" id="modal-card">
-      <button class="modal-close" id="modal-close">✕</button>
+      <button class="modal-close" id="modal-close" aria-label="Cerrar modal">✕</button>
       <div class="modal-content" id="modal-content"></div>
     </div>
   </div>
 
+  <!-- Sección 03: Cabina de Métricas / Impacto -->
   <section id="cabin" class="cabin-section">
     <div class="section-inner">
-      <div class="section-label">03 — Resumen</div>
-      <h2 class="section-title">Experiencia Técnica<br>& <span class="text-gradient">Sistemas Integrados</span></h2>
+      <div class="section-label">03 — Métricas de Impacto</div>
+      <h2 class="section-title">
+        Experiencia Técnica<br>
+        & <span class="text-gradient">Sistemas Integrados</span>
+      </h2>
+      
       <div class="cabin-stats">
         <div class="stat-item reveal">
-          <span class="stat-num" data-target="7">7</span>
-          <span class="stat-label">Proyectos Híbridos</span>
+          <div class="stat-glow"></div>
+          <span class="stat-num" data-target="11">11</span>
+          <span class="stat-label">Proyectos & Entregables</span>
+          <span class="stat-sub">Hardware, Software y Reportes</span>
         </div>
-        <div class="stat-item reveal">
-          <span class="stat-num" data-target="4">4</span>
-          <span class="stat-label">Certificaciones</span>
+        
+        <div class="stat-item reveal stat-highlight">
+          <div class="stat-glow gold"></div>
+          <span class="stat-num gold-num" data-target="4">4</span>
+          <span class="stat-label">Certificaciones Oficiales</span>
+          <span class="stat-sub">Siemens, STPS DC-3, IngeLearn, Control+</span>
         </div>
+        
         <div class="stat-item reveal">
-          <span class="stat-num" data-target="4">4</span>
-          <span class="stat-label">Lenguajes de Prog.</span>
+          <div class="stat-glow"></div>
+          <span class="stat-num" data-target="60">60</span>
+          <span class="stat-label">Horas Capacitación Siemens</span>
+          <span class="stat-sub">Automatización en TIA Portal</span>
         </div>
+        
         <div class="stat-item reveal">
-          <span class="stat-num" data-target="3">3</span>
-          <span class="stat-label">Áreas de Ingeniería</span>
+          <div class="stat-glow"></div>
+          <span class="stat-num" data-target="100">100</span>
+          <span class="stat-label">% Fusión Físico-Digital</span>
+          <span class="stat-sub">De la señal electrónica a la Nube</span>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Sección 04: Contacto -->
   <section id="contact" class="contact-section">
     <div class="section-inner">
-      <div class="section-label">04 — Contacto</div>
-      <h2 class="section-title">Trabajemos juntos<span class="accent">.</span></h2>
-      <p class="contact-sub">¿Tienes un proyecto de automatización, inteligencia artificial o desarrollo de software? Hablemos.</p>
-      <div class="contact-links-wrapper">
-        <a href="mailto:ivan.rojas@iberopuebla.mx" class="contact-link">ivan.rojas@iberopuebla.mx ↗</a>
-        <a href="mailto:ivan.rojas.mec@gmail.com" class="contact-link">ivan.rojas.mec@gmail.com ↗</a>
+      <div class="section-label">04 — Contacto Directo</div>
+      <h2 class="section-title">Construyamos el <span class="text-gradient">futuro</span><span class="accent">.</span></h2>
+      <p class="contact-sub">
+        ¿Tienes un proyecto de automatización, robótica, IoT o desarrollo tecnológico? Escríbeme y analicemos cómo materializarlo.
+      </p>
+      
+      <div class="contact-cards-container">
+        <a href="mailto:ivan.rojas@iberopuebla.mx" class="contact-card">
+          <div class="contact-icon">✉</div>
+          <div class="contact-details">
+            <span class="contact-type">Correo Institucional</span>
+            <span class="contact-email">ivan.rojas@iberopuebla.mx</span>
+          </div>
+          <span class="contact-arrow">↗</span>
+        </a>
+        
+        <a href="mailto:ivan.rojas.mec@gmail.com" class="contact-card">
+          <div class="contact-icon">⚡</div>
+          <div class="contact-details">
+            <span class="contact-type">Correo Personal / Profesional</span>
+            <span class="contact-email">ivan.rojas.mec@gmail.com</span>
+          </div>
+          <span class="contact-arrow">↗</span>
+        </a>
       </div>
     </div>
   </section>
 
+  <!-- Pie de Página -->
   <footer class="footer">
-    <span>Iván Rojas Robles · Universidad Iberoamericana</span>
-    <span class="accent">Puebla, MX · 2026</span>
+    <div class="footer-left">
+      <span>Iván Rojas Robles</span> · <span>Ingeniería Mecatrónica</span> · <span>Universidad Iberoamericana</span>
+    </div>
+    <div class="footer-right">
+      <span class="accent">Puebla, México · 2026</span>
+    </div>
   </footer>
 
+  <!-- Scripts Externos (Three.js & GSAP) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+  
+  <!-- Script Principal de la Aplicación -->
   <script src="script.js"></script>
 </body>
 </html>
