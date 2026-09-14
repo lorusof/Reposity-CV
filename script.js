@@ -569,45 +569,99 @@ if (typeof gsap !== 'undefined') {
         .from('#hero-actions', { opacity: 0, y: 25, duration: 0.8 }, '-=0.5')
         .from('.hero-quick-tags', { opacity: 0, y: 15, duration: 0.7 }, '-=0.4');
 
+  // Función de respaldo para garantizar que el Perfil nunca permanezca oculto
+  function ensureAboutVisibility() {
+    const aboutText = document.querySelector('.about-text');
+    const aboutRight = document.querySelector('.about-right');
+    const chips = document.querySelectorAll('.skill-chip');
+    if (aboutText) {
+      aboutText.style.opacity = '1';
+      aboutText.style.transform = 'none';
+      aboutText.style.visibility = 'visible';
+    }
+    if (aboutRight) {
+      aboutRight.style.opacity = '1';
+      aboutRight.style.transform = 'none';
+      aboutRight.style.visibility = 'visible';
+    }
+    chips.forEach(c => {
+      c.style.opacity = '1';
+      c.style.transform = 'none';
+      c.style.visibility = 'visible';
+    });
+  }
+
   // Animaciones al hacer Scroll
   if (typeof ScrollTrigger !== 'undefined') {
     gsap.utils.toArray('.reveal').forEach(el => {
       gsap.fromTo(el,
-        { opacity: 0, y: 40 },
+        { opacity: 0, y: 35 },
         {
           opacity: 1,
           y: 0,
           duration: 0.85,
           ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+          immediateRender: false,
+          scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none', once: true }
         }
       );
     });
 
-    gsap.from('.about-text', {
-      opacity: 0,
-      x: -45,
-      duration: 0.95,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: '.about-section', start: 'top 75%' }
-    });
+    // Perfil: Animación suave con immediateRender: false (Garantiza que siempre sea visible por defecto)
+    gsap.fromTo('.about-text',
+      { opacity: 0, x: -35 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        immediateRender: false,
+        clearProps: 'all',
+        scrollTrigger: {
+          trigger: '#about',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true
+        }
+      }
+    );
 
-    gsap.from('.about-right', {
-      opacity: 0,
-      x: 45,
-      duration: 0.95,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: '.about-section', start: 'top 75%' }
-    });
+    gsap.fromTo('.about-right',
+      { opacity: 0, x: 35 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        immediateRender: false,
+        clearProps: 'all',
+        scrollTrigger: {
+          trigger: '#about',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true
+        }
+      }
+    );
 
-    gsap.from('.skill-chip', {
-      opacity: 0,
-      scale: 0.8,
-      duration: 0.45,
-      stagger: 0.04,
-      ease: 'back.out(1.5)',
-      scrollTrigger: { trigger: '.skills-grid', start: 'top 85%' }
-    });
+    gsap.fromTo('.skill-chip',
+      { opacity: 0, y: 15 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.45,
+        stagger: 0.03,
+        ease: 'back.out(1.5)',
+        immediateRender: false,
+        clearProps: 'all',
+        scrollTrigger: {
+          trigger: '.skills-grid',
+          start: 'top 90%',
+          toggleActions: 'play none none none',
+          once: true
+        }
+      }
+    );
 
     // Contador Numérico para las Estadísticas de la Cabina
     document.querySelectorAll('.stat-num').forEach(el => {
@@ -615,6 +669,7 @@ if (typeof gsap !== 'undefined') {
       ScrollTrigger.create({
         trigger: el,
         start: 'top 85%',
+        once: true,
         onEnter: () => {
           let count = 0;
           const durationMs = 1200;
@@ -631,6 +686,36 @@ if (typeof gsap !== 'undefined') {
       });
     });
   }
+
+  // Respaldos de Visibilidad Inmediata:
+  // 1. IntersectionObserver nativo como guardián
+  if ('IntersectionObserver' in window) {
+    const aboutObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          ensureAboutVisibility();
+        }
+      });
+    }, { threshold: 0.05 });
+    const aboutSec = document.getElementById('about');
+    if (aboutSec) aboutObserver.observe(aboutSec);
+  }
+
+  // 2. Al pulsar cualquier enlace al Perfil en la navegación
+  document.querySelectorAll('a[href="#about"]').forEach(link => {
+    link.addEventListener('click', () => {
+      setTimeout(ensureAboutVisibility, 80);
+      if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+    });
+  });
+
+  // 3. Fallback de seguridad al cargar la página completa
+  window.addEventListener('load', () => {
+    ensureAboutVisibility();
+    if (typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.refresh();
+    }
+  });
 }
 
 /* ============================================================

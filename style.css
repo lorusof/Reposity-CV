@@ -530,7 +530,7 @@ body::before {
 
 .hero-title .line {
   display: block;
-  opacity: 1; /* Visibilidad garantizada para que tu nombre siempre aparezca */
+  opacity: 1; /* Visibilidad garantizada para que su nombre siempre aparezca */
   transform: none;
 }
 
@@ -685,9 +685,11 @@ body::before {
    SECCIÓN 01: PERFIL PROFESIONAL
    ============================================================ */
 .about-section {
-  padding: 10rem 0;
+  padding: 9rem 0;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  opacity: 1;
+  visibility: visible;
 }
 
 .about-grid {
@@ -695,6 +697,13 @@ body::before {
   grid-template-columns: 1.15fr 0.85fr;
   gap: 5rem;
   align-items: start;
+  opacity: 1;
+  visibility: visible;
+}
+
+.about-text {
+  opacity: 1;
+  visibility: visible;
 }
 
 .about-heading {
@@ -761,6 +770,8 @@ body::before {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  opacity: 1;
+  visibility: visible;
 }
 
 .skills-label {
